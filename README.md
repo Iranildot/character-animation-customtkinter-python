@@ -144,6 +144,8 @@ Demonstrates grid-based movement.
 python example1.py
 ```
 
+https://github.com/user-attachments/assets/749e16c1-95c6-4b91-bd3d-1a92a6901507
+
 ------------------------------------------------------------------------
 
 ## 🕹 example2.py --- Free Movement
@@ -161,6 +163,8 @@ Demonstrates pixel-based movement inside a frame.
 ``` bash
 python example2.py
 ```
+
+https://github.com/user-attachments/assets/7a12fa5f-a45e-4aff-a96d-34ee72bcc58a
 
 ------------------------------------------------------------------------
 
@@ -181,13 +185,7 @@ UI-based animation preview tool.
 python example3.py
 ```
 
-<p align="center">
-  <video 
-    src="https://github.com/user-attachments/assets/4fb2c0ec-818c-401f-b260-87acf9316bdb" 
-    controls 
-    width="480">
-  </video>
-</p>
+https://github.com/user-attachments/assets/4fb2c0ec-818c-401f-b260-87acf9316bdb
 
 ------------------------------------------------------------------------
 
