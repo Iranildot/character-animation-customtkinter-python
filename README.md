@@ -181,6 +181,14 @@ UI-based animation preview tool.
 python example3.py
 ```
 
+<p align="center">
+  <video 
+    src="https://github.com/user-attachments/assets/4fb2c0ec-818c-401f-b260-87acf9316bdb" 
+    controls 
+    width="480">
+  </video>
+</p>
+
 ------------------------------------------------------------------------
 
 ## 🗂 Recommended Project Structure
