@@ -200,17 +200,21 @@ class Character(ctk.CTkLabel):
 
             target_cell = self.grid_cells[row][col]
 
-            # Remove posicionamentos anteriores
+            # Clear any previous geometry management
             self._wrapper.place_forget()
             self._wrapper.grid_forget()
 
-            # Centraliza automaticamente dentro da célula (respeita scaling!)
+            # Center the character inside the target cell (scaling-safe and layout-safe)
             self._wrapper.place(in_=target_cell, relx=0.5, rely=0.5, anchor="center")
 
         elif self.frame is not None:
             x, y = self.position
+
+            # Clear any previous geometry management
             self._wrapper.place_forget()
             self._wrapper.grid_forget()
+
+            # Absolute positioning inside the frame
             self._wrapper.place(in_=self.frame, x=x, y=y)
 
         else:
