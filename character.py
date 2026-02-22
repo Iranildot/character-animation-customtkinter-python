@@ -85,12 +85,11 @@ class Character(ctk.CTkLabel):
         Raises:
             RuntimeError: If neither frame nor grid_cells is provided when positioning is applied.
         """
-        root = master.winfo_toplevel()
 
         self._background_color = bg_color
 
         self._wrapper = ctk.CTkFrame(
-            root,
+            master,
             fg_color=bg_color,
             width=size,
             height=size,
@@ -173,16 +172,6 @@ class Character(ctk.CTkLabel):
             if not (0 <= row < rows and 0 <= col < cols):
                 return False
 
-        elif self.frame is not None:
-            x, y = position
-            self.frame.update_idletasks()
-
-            frame_width = self.frame.winfo_width()
-            frame_height = self.frame.winfo_height()
-
-            if not (0 <= x <= frame_width - self.size and 0 <= y <= frame_height - self.size):
-                return False
-
         self.position = position
         self._update_position()
         return True
@@ -203,12 +192,6 @@ class Character(ctk.CTkLabel):
         return self.set_position((x + dx, y + dy))
 
     def _update_position(self):
-        """
-        Applies the current position to the wrapper widget.
-
-        Raises:
-            RuntimeError: If neither `frame` nor `grid_cells` is defined.
-        """
         if self.grid_cells is not None:
             row, col = self.position
 
@@ -216,11 +199,13 @@ class Character(ctk.CTkLabel):
                 return
 
             target_cell = self.grid_cells[row][col]
-            root = self._wrapper.winfo_toplevel()
-            root.update_idletasks()
 
-            cell_x = target_cell.winfo_rootx() - root.winfo_rootx()
-            cell_y = target_cell.winfo_rooty() - root.winfo_rooty()
+            # 🔁 agora tudo relativo ao master (pai do wrapper)
+            parent = self._wrapper.master
+            parent.update_idletasks()
+
+            cell_x = target_cell.winfo_rootx() - parent.winfo_rootx()
+            cell_y = target_cell.winfo_rooty() - parent.winfo_rooty()
 
             offset_x = (target_cell.winfo_width() - self.size) // 2
             offset_y = (target_cell.winfo_height() - self.size) // 2
