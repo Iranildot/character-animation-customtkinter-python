@@ -200,17 +200,12 @@ class Character(ctk.CTkLabel):
 
             target_cell = self.grid_cells[row][col]
 
-            # 🔁 agora tudo relativo ao master (pai do wrapper)
-            parent = self._wrapper.master
-            parent.update_idletasks()
+            # Remove posicionamentos anteriores
+            self._wrapper.place_forget()
+            self._wrapper.grid_forget()
 
-            cell_x = target_cell.winfo_rootx() - parent.winfo_rootx()
-            cell_y = target_cell.winfo_rooty() - parent.winfo_rooty()
-
-            offset_x = (target_cell.winfo_width() - self.size) // 2
-            offset_y = (target_cell.winfo_height() - self.size) // 2
-
-            self._wrapper.place(x=cell_x + offset_x, y=cell_y + offset_y)
+            # Centraliza automaticamente dentro da célula (respeita scaling!)
+            self._wrapper.place(in_=target_cell, relx=0.5, rely=0.5, anchor="center")
 
         elif self.frame is not None:
             x, y = self.position
